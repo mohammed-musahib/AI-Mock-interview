@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}AI Mock Interview - Practice Smarter{% endblock %}</title>
+  
+  <!-- Modern Clean Typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  {% block extra_head %}{% endblock %}
+</head>
+<body>
+  <!-- Header / Navigation -->
+  <nav class="navbar">
+    <div class="app-container nav-inner">
+      <a href="{{ url_for('index') }}" class="brand-logo" id="nav-brand-logo">
+        <div class="brand-icon">⚡</div>
+        <span>AI Mock Interview</span>
+        <span class="brand-badge">PRO</span>
+      </a>
+      
+      <div class="nav-links">
+        <a href="{{ url_for('index') }}" class="nav-link {% if request.endpoint == 'index' %}active{% endif %}" id="nav-home">Home</a>
+        <a href="{{ url_for('setup') }}" class="btn btn-sm btn-primary" id="nav-start-btn">Start Interview</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main View Area -->
+  <main id="main-content">
+    {% block content %}{% endblock %}
+  </main>
+
+  <!-- Global Footer -->
+  <footer class="app-footer">
+    <div class="app-container">
+      <p>AI Mock Interview &copy; 2026. Built with Python, Flask, and Google Gemini API.</p>
+    </div>
+  </footer>
+
+  <!-- Loading State Overlay -->
+  <div class="loading-overlay" id="loading-overlay" aria-live="assertive" role="alert">
+    <div class="loading-spinner"></div>
+    <div class="loading-title" id="loading-title">Analyzing Resume...</div>
+    <div class="loading-desc" id="loading-desc">Generating personalized interview questions tailored to your skills.</div>
+  </div>
+
+  <!-- Toast Container -->
+  <div class="toast-container" id="toast-container"></div>
+
+  <!-- Core Javascript -->
+  <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+  {% block scripts %}{% endblock %}
+</body>
+</html>

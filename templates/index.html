@@ -1,0 +1,140 @@
+{% extends "base.html" %}
+
+{% block title %}AI Mock Interview - Practice Smarter, Interview Better{% endblock %}
+
+{% block content %}
+<div class="app-container">
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="hero-content">
+      <div class="section-tag">AI-Powered Career Intelligence</div>
+      <h1 class="hero-title">
+        Practice Smarter. <span class="title-gradient">Interview Better.</span>
+      </h1>
+      <p class="hero-subtitle">
+        Get AI-powered feedback based on your resume. Upload your credentials, choose your engineering domain, and experience realistic technical interviews tailored to your experience.
+      </p>
+
+      <div class="hero-actions">
+        <a href="{{ url_for('setup') }}" class="btn btn-lg btn-primary" id="hero-start-btn">
+          <span>Start Mock Interview</span>
+          <span>→</span>
+        </a>
+        <a href="#how-it-works" class="btn btn-lg btn-secondary" id="hero-how-btn">
+          How It Works
+        </a>
+      </div>
+
+      <div class="hero-stats">
+        <div class="stat-item">
+          <div class="stat-val">10</div>
+          <div class="stat-lbl">Questions Per Session</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-val">5</div>
+          <div class="stat-lbl">Technical Domains</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-val">100%</div>
+          <div class="stat-lbl">Resume Personalized</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Feature Cards Section -->
+  <section class="features-section">
+    <div class="section-header">
+      <div class="section-tag">Core Capabilities</div>
+      <h2 class="section-title">Designed for Real Engineering Interviews</h2>
+      <p class="section-desc">Experience a balanced interview pipeline engineered to simulate genuine hiring manager standards.</p>
+    </div>
+
+    <div class="features-grid">
+      <!-- 1 -->
+      <div class="feature-card">
+        <div class="feature-icon-wrap">📄</div>
+        <h3 class="feature-title">Resume-Based Questions</h3>
+        <p class="feature-desc">AI extracts technologies, frameworks, and projects from your PDF, DOCX, or TXT resume to formulate relevant questions.</p>
+      </div>
+
+      <!-- 2 -->
+      <div class="feature-card">
+        <div class="feature-icon-wrap">🧠</div>
+        <h3 class="feature-title">AI-Powered Evaluation</h3>
+        <p class="feature-desc">Google Gemini analyzes your technical explanations for depth, relevance, correctness, and system design comprehension.</p>
+      </div>
+
+      <!-- 3 -->
+      <div class="feature-card">
+        <div class="feature-icon-wrap">🎙️</div>
+        <h3 class="feature-title">Voice Interview</h3>
+        <p class="feature-desc">Speak your answers naturally using browser speech recognition and listen to questions read aloud with high-fidelity speech synthesis.</p>
+      </div>
+
+      <!-- 4 -->
+      <div class="feature-card">
+        <div class="feature-icon-wrap">⚡</div>
+        <h3 class="feature-title">Instant Feedback</h3>
+        <p class="feature-desc">Objective questions are graded deterministically, while theory answers receive comprehensive qualitative feedback in real time.</p>
+      </div>
+
+      <!-- 5 -->
+      <div class="feature-card">
+        <div class="feature-icon-wrap">🎯</div>
+        <h3 class="feature-title">Multiple Domains</h3>
+        <p class="feature-desc">Select from Cyber Security, Python Full Stack, Java Full Stack, Data Science, and AI/ML Engineering.</p>
+      </div>
+
+      <!-- 6 -->
+      <div class="feature-card">
+        <div class="feature-icon-wrap">📊</div>
+        <h3 class="feature-title">Personalized Results</h3>
+        <p class="feature-desc">Receive a 1 to 10 final score, performance tier, detailed strengths, actionable areas to improve, and study recommendations.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works Section -->
+  <section class="workflow-section" id="how-it-works">
+    <div class="section-header">
+      <div class="section-tag">Structured Process</div>
+      <h2 class="section-title">How It Works</h2>
+      <p class="section-desc">A structured 4-step path from resume upload to comprehensive diagnostic feedback.</p>
+    </div>
+
+    <div class="steps-grid">
+      <div class="step-card">
+        <span class="step-num">STEP 01</span>
+        <h3 class="step-title">Upload Resume</h3>
+        <p class="step-desc">Upload your resume in PDF, DOCX, or TXT. Our parser detects your core skills and tools.</p>
+      </div>
+
+      <div class="step-card">
+        <span class="step-num">STEP 02</span>
+        <h3 class="step-title">Select Domain</h3>
+        <p class="step-desc">Pick your specialization target: Cyber Security, Python, Java, Data Science, or AI/ML.</p>
+      </div>
+
+      <div class="step-card">
+        <span class="step-num">STEP 03</span>
+        <h3 class="step-title">Take Interview</h3>
+        <p class="step-desc">Tackle 5 resume-tailored MCQs followed by 5 technical theory questions using voice or text.</p>
+      </div>
+
+      <div class="step-card">
+        <span class="step-num">STEP 04</span>
+        <h3 class="step-title">Review Score</h3>
+        <p class="step-desc">Get your 1 to 10 score, readiness level, question reviews, and tailored study recommendations.</p>
+      </div>
+    </div>
+
+    <div style="text-align: center; margin-top: 3.5rem;">
+      <a href="{{ url_for('setup') }}" class="btn btn-lg btn-primary" id="cta-start-btn">
+        <span>Launch Your Interview</span>
+        <span>→</span>
+      </a>
+    </div>
+  </section>
+</div>
+{% endblock %}

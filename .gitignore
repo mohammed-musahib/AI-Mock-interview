@@ -1,0 +1,44 @@
+# Environment Variables
+.env
+.env.local
+
+# Python
+**pycache**/
+__pycache__/
+*.pyc
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Uploads and temporary files
+uploads/*
+!uploads/.gitkeep
+
+# IDE / System
+.vscode/
+.idea/
+*.swp
+*.swo
+Thumbs.db
+Desktop.ini
+
+flask_sessions/

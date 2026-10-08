@@ -1,0 +1,120 @@
+{% extends "base.html" %}
+
+{% block title %}Live Interview - AI Mock Interview{% endblock %}
+
+{% block content %}
+<div class="app-container">
+  <!-- Interview Top Progress Header -->
+  <header class="interview-header">
+    <div class="interview-header-inner">
+      <div class="interview-domain-pill" id="interview-domain-pill">
+        <span>🎯</span>
+        <span id="header-domain-text">Domain: Loading...</span>
+      </div>
+
+      <div class="question-tracker" id="question-tracker">
+        Question <span id="current-q-index">1</span> of 10
+      </div>
+
+      <div style="font-size: 0.85rem; color: var(--text-dim);" id="auto-save-indicator">
+        ✓ Answers saved in session
+      </div>
+    </div>
+
+    <!-- Progress Bar -->
+    <div class="progress-container">
+      <div class="progress-bar-fill" id="progress-bar-fill" style="width: 10%;"></div>
+    </div>
+  </header>
+
+  <!-- Question Workspace Container -->
+  <div class="question-workspace">
+    <div class="question-box">
+      <!-- Meta row: Topic badge and Voice reader -->
+      <div class="question-meta-row">
+        <div class="topic-badge" id="question-topic-badge">General</div>
+
+        <div class="speech-controls">
+          <button type="button" class="btn btn-sm btn-secondary" id="speak-question-btn" title="Listen to question">
+            <span id="speaker-icon">🔊</span>
+            <span id="speaker-label">Read Question</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Question Text -->
+      <h2 class="question-text" id="question-text">
+        Loading question...
+      </h2>
+
+      <!-- MCQ Workspace (Q1 to Q5) -->
+      <div id="mcq-container" style="display: none;">
+        <div class="options-list" id="options-list">
+          <!-- Dynamically populated option cards -->
+        </div>
+      </div>
+
+      <!-- Theory Workspace (Q6 to Q10) -->
+      <div id="theory-container" style="display: none;">
+        <div class="theory-answer-area">
+          <label for="theory-answer-input" style="display: block; font-size: 0.9rem; font-weight: 600; margin-bottom: 0.5rem; color: var(--text-muted);">
+            Your Technical Explanation:
+          </label>
+          <textarea
+            id="theory-answer-input"
+            class="theory-textarea"
+            placeholder="Type your response here, or click the microphone button below to record your answer using voice..."
+            aria-label="Your technical answer"
+          ></textarea>
+
+          <div class="theory-controls-row">
+            <button type="button" class="btn btn-sm btn-outline" id="mic-toggle-btn">
+              <span id="mic-icon">🎤</span>
+              <span id="mic-label">Start Voice Recording</span>
+            </button>
+
+            <div class="voice-status" id="voice-status">
+              <span id="voice-pulse-dot" style="display: none;" class="pulse-dot"></span>
+              <span id="voice-status-text">Microphone ready</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Action Navigation Bar -->
+    <div class="interview-actions">
+      <button type="button" class="btn btn-secondary" id="prev-question-btn" disabled>
+        ← Previous
+      </button>
+
+      <div style="display: flex; gap: 1rem;">
+        <button type="button" class="btn btn-primary" id="next-question-btn">
+          Next →
+        </button>
+        <button type="button" class="btn btn-success" id="submit-interview-btn" style="display: none;">
+          Submit Interview ✓
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Submit Confirmation Modal -->
+<div class="loading-overlay" id="confirm-modal" style="display: none;">
+  <div class="glass-card" style="max-width: 500px; text-align: center; margin: 1rem;">
+    <h3 style="font-size: 1.4rem; font-weight: 700; margin-bottom: 0.75rem;">Submit Interview?</h3>
+    <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1.5rem;" id="submit-summary-msg">
+      You have answered all 10 questions. Are you ready to submit your answers for AI evaluation and score generation?
+    </p>
+    <div style="display: flex; justify-content: center; gap: 1rem;">
+      <button type="button" class="btn btn-secondary" id="cancel-submit-btn">Continue Review</button>
+      <button type="button" class="btn btn-success" id="confirm-submit-btn">Yes, Evaluate Answers</button>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/interview.js') }}"></script>
+{% endblock %}

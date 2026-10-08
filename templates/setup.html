@@ -1,0 +1,115 @@
+{% extends "base.html" %}
+
+{% block title %}Configure Interview - AI Mock Interview{% endblock %}
+
+{% block content %}
+<div class="app-container setup-container">
+  <div class="setup-header">
+    <div class="section-tag">Session Setup</div>
+    <h1 class="hero-title" style="font-size: 2.5rem; margin-bottom: 0.5rem;">
+      Prepare Your <span class="title-gradient">Technical Interview</span>
+    </h1>
+    <p class="section-desc">Upload your resume and choose your target engineering domain to generate 10 tailored questions.</p>
+  </div>
+
+  <!-- STEP 1: RESUME UPLOAD -->
+  <section class="setup-card" id="resume-section">
+    <h2 class="step-heading">
+      <span class="step-badge">1</span>
+      <span>Upload Your Resume</span>
+    </h2>
+
+    <div class="dropzone" id="dropzone" tabindex="0" role="button" aria-label="Drop resume file here or click to browse">
+      <div class="dropzone-icon">📁</div>
+      <div class="dropzone-text">Drag and drop your resume here, or browse files</div>
+      <div class="dropzone-subtext">Supported formats: PDF, DOCX, TXT (Maximum file size: 10 MB)</div>
+      <input type="file" id="resume-file-input" class="file-input" accept=".pdf,.docx,.txt">
+    </div>
+
+    <!-- Uploaded File Banner -->
+    <div class="uploaded-file-banner" id="uploaded-file-banner">
+      <div class="file-info">
+        <div style="font-size: 1.5rem;">📄</div>
+        <div>
+          <div class="file-name" id="uploaded-filename">candidate_resume.pdf</div>
+          <div class="file-meta" id="uploaded-meta">Text extracted successfully</div>
+        </div>
+      </div>
+      <button type="button" class="btn btn-sm btn-secondary" id="remove-file-btn">Remove / Replace</button>
+    </div>
+
+    <!-- Extracted Skills Tags Container -->
+    <div class="skills-tags-wrap" id="skills-tags-wrap" style="display: none;">
+      <div class="skills-tags-title">Detected Technical Skills & Tools:</div>
+      <div class="skills-tags-list" id="skills-tags-list"></div>
+    </div>
+  </section>
+
+  <!-- STEP 2: DOMAIN SELECTION -->
+  <section class="setup-card" id="domain-section">
+    <h2 class="step-heading">
+      <span class="step-badge">2</span>
+      <span>Select Interview Domain</span>
+    </h2>
+
+    <div class="domains-grid">
+      <!-- 1. Cyber Security -->
+      <div class="domain-card" data-domain="Cyber Security" tabindex="0" role="button">
+        <div class="domain-icon">🛡️</div>
+        <h3 class="domain-name">Cyber Security</h3>
+        <p class="domain-desc">Application security, OWASP Top 10, network defense, SIEM, penetration testing, and Zero Trust architecture.</p>
+        <div class="domain-select-btn">Select Domain</div>
+      </div>
+
+      <!-- 2. Python Full Stack -->
+      <div class="domain-card" data-domain="Python Full Stack" tabindex="0" role="button">
+        <div class="domain-icon">🐍</div>
+        <h3 class="domain-name">Python Full Stack</h3>
+        <p class="domain-desc">Flask, Django, FastAPI, asynchronous programming, ORMs, REST APIs, frontend integration, and database tuning.</p>
+        <div class="domain-select-btn">Select Domain</div>
+      </div>
+
+      <!-- 3. Java Full Stack -->
+      <div class="domain-card" data-domain="Java Full Stack" tabindex="0" role="button">
+        <div class="domain-icon">☕</div>
+        <h3 class="domain-name">Java Full Stack</h3>
+        <p class="domain-desc">Core Java, Spring Boot, microservices, Hibernate/JPA, JVM memory models, concurrency, and enterprise systems.</p>
+        <div class="domain-select-btn">Select Domain</div>
+      </div>
+
+      <!-- 4. Data Science -->
+      <div class="domain-card" data-domain="Data Science" tabindex="0" role="button">
+        <div class="domain-icon">📈</div>
+        <h3 class="domain-name">Data Science</h3>
+        <p class="domain-desc">Data analysis with Pandas, statistical inference, feature engineering, classification, regression, and model evaluation.</p>
+        <div class="domain-select-btn">Select Domain</div>
+      </div>
+
+      <!-- 5. AI/ML Engineer -->
+      <div class="domain-card" data-domain="AI/ML Engineer" tabindex="0" role="button">
+        <div class="domain-icon">🤖</div>
+        <h3 class="domain-name">AI/ML Engineer</h3>
+        <p class="domain-desc">Deep learning, Transformers, PyTorch, LLM fine-tuning, RAG systems, vector embeddings, and production MLOps.</p>
+        <div class="domain-select-btn">Select Domain</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STEP 3: ACTION FOOTER -->
+  <div class="setup-footer">
+    <div>
+      <span style="font-size: 0.9rem; color: var(--text-muted);" id="setup-status-label">
+        Please upload your resume and select a domain to proceed.
+      </span>
+    </div>
+    <button type="button" class="btn btn-lg btn-primary" id="start-interview-btn" disabled>
+      <span>Start Mock Interview</span>
+      <span>→</span>
+    </button>
+  </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/setup.js') }}"></script>
+{% endblock %}
